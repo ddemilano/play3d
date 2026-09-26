@@ -48,6 +48,91 @@ body{background:radial-gradient(55vw 34vw at 6% 4%,rgba(102,223,173,.19),transpa
 @keyframes cometPageFlow{0%{background-position:0% 0%}50%{background-position:65% 22%}100%{background-position:100% 70%}}@keyframes cometSceneFlow{0%{background-position:0% 50%}100%{background-position:100% 48%}}@keyframes sceneLightSweep{0%{transform:translate3d(-2%,-1%,0) scale(1)}100%{transform:translate3d(3%,2%,0) scale(1.06)}}@keyframes worldSunComet{0%{transform:translate3d(-4px,0,0) scale(1)}100%{transform:translate3d(8px,7px,0) scale(1.045)}}@keyframes collectionColorWash{0%{transform:translateX(-4%) translateY(-2%) scale(1)}100%{transform:translateX(5%) translateY(1%) scale(1.08)}}@keyframes cardAtmosphere{0%{background-position:0% 20%}100%{background-position:100% 80%}}
 @media(max-width:620px){.nav{top:10px;width:calc(100% - 16px);padding:10px 11px;border-radius:19px}.logo b{font-size:1rem}.logo-mark{width:27px;height:27px;border-radius:9px}.cartbtn{padding:9px 9px}.hero{padding-top:104px}.hero-scene{min-height:430px;border-radius:24px}.intro{border-radius:26px;padding-left:17px;padding-right:17px}.experience,.custom{border-radius:28px;padding-left:18px;padding-right:18px}}
 
+
+/* PLAY3D — refined editorial card / comet-celeste pass */
+html,body{overflow-x:clip}
+.collection{background:
+  radial-gradient(52vw 30vw at 8% 6%,rgba(49,201,142,.10),transparent 70%),
+  radial-gradient(48vw 32vw at 92% 10%,rgba(79,178,223,.13),transparent 72%),
+  linear-gradient(180deg,#e8fbf3 0%,#e4f7f8 48%,#eef8fb 100%);
+}
+.collection:before{background:linear-gradient(110deg,rgba(49,201,142,.09),rgba(79,178,223,.10),transparent 70%);filter:blur(26px)}
+.section-head{margin-bottom:50px}
+.products{gap:26px 28px}
+.product .art{
+  aspect-ratio:4/4.7;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.80);
+  box-shadow:0 22px 56px rgba(28,71,64,.11),inset 0 1px 0 rgba(255,255,255,.75);
+}
+.art:after{background:linear-gradient(108deg,transparent 20%,rgba(255,255,255,.18) 47%,transparent 74%);z-index:7}
+.art .glass-panel{
+  left:6%;right:6%;top:5%;bottom:11%;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.34);
+  background:linear-gradient(112deg,rgba(255,255,255,.11),rgba(255,255,255,0) 48%,rgba(255,255,255,.07));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.58);
+  backdrop-filter:blur(1px);
+}
+.art .ground-plane{
+  left:-18%;right:-18%;bottom:-23%;height:55%;
+  background:radial-gradient(ellipse at 50% 0%,rgba(245,253,250,.86) 0%,rgba(211,237,229,.68) 42%,rgba(156,200,185,.26) 78%,rgba(156,200,185,0) 100%);
+  border-radius:50%;
+  box-shadow:none;
+  transform-origin:center top;
+}
+.art .contact-shadow{
+  left:29%;right:29%;bottom:13.5%;height:7%;
+  background:radial-gradient(ellipse at center,rgba(16,53,43,.30) 0%,rgba(16,53,43,.16) 38%,rgba(16,53,43,.04) 68%,transparent 100%);
+  filter:blur(5px);
+  opacity:.82;
+  z-index:4;
+}
+.art .product-photo{
+  left:5%;right:5%;top:0!important;bottom:4%!important;
+  width:90%;height:96%!important;
+  object-fit:contain;object-position:center bottom;
+  z-index:5;
+  filter:drop-shadow(0 24px 18px rgba(22,65,54,.15));
+}
+.art.or2{background:linear-gradient(145deg,#d9eff8,#bfe7e5 52%,#edf8f6)}
+.art.or3{background:linear-gradient(145deg,#e4f8ef,#d4eef4 50%,#f1f7f8)}
+.art.or4{background:linear-gradient(145deg,#dceff7,#bfe1ef 52%,#eaf7f2)}
+.art.or5{background:linear-gradient(145deg,#def7ed,#cbeaf3 52%,#edf7fb)}
+.art.or6{background:linear-gradient(145deg,#e4f7f1,#cfe7ef 52%,#f1f8f7)}
+.add{
+  background:transparent;
+  border:0;
+  border-top:1px solid rgba(16,37,31,.10);
+  border-radius:0;
+  padding:13px 2px 4px;
+  color:#285d4f;
+  letter-spacing:.08em;
+  font-size:.72rem;
+}
+.add:hover{background:transparent;box-shadow:none;color:#238ec0}
+.meta{padding:16px 2px 9px}.meta h3{font-weight:650}.price{font-weight:750}
+.product{transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.product:hover{transform:translateY(-4px)}
+.product:hover .art{box-shadow:0 28px 68px rgba(30,82,72,.15)}
+.product:hover .art .contact-shadow{opacity:.68}
+.tag{background:rgba(248,255,252,.48);border-color:rgba(255,255,255,.62);backdrop-filter:blur(10px)}
+.logo b{letter-spacing:-.05em}.logo b span{color:#55bce5}
+.nav{background:rgba(250,255,253,.62)}
+.navlinks button:hover,.cartbtn:hover,.menubtn:hover{background:linear-gradient(135deg,rgba(49,201,142,.12),rgba(79,178,223,.15))}
+@media(max-width:620px){
+  .collection{padding-top:54px}
+  .section-head{margin-bottom:34px}
+  .products{gap:34px}
+  .product .art{aspect-ratio:1/1;border-radius:20px}
+  .art .glass-panel{left:5%;right:5%;top:5%;bottom:9%;border-radius:16px}
+  .art .ground-plane{left:-22%;right:-22%;bottom:-27%;height:58%}
+  .art .contact-shadow{left:25%;right:25%;bottom:11.5%;height:7.5%}
+  .art .product-photo{left:3%;right:3%;top:-1%!important;bottom:1%!important;width:94%;height:98%!important}
+  .meta{padding-top:14px}
+  .add{padding-top:12px}
+}
+
 </style>
 </head>
 <body>
@@ -163,12 +248,12 @@ function toggleCart(open){const d=document.getElementById('drawer');d.classList.
 function add(i){cart.push(products[i]);document.getElementById('count').textContent=cart.length;renderCart();toggleCart(true)}
 function removeItem(i){cart.splice(i,1);document.getElementById('count').textContent=cart.length;renderCart()}
 function renderCart(){const box=document.getElementById('cartItems');if(!cart.length){box.innerHTML='<div style="padding:32px 0;color:#637970">Tu carrito todavía está vacío.</div>';document.getElementById('total').textContent='$0';return}box.innerHTML=cart.map((p,i)=>'<div class="cart-item"><div><div style="font-weight:700">'+escapeHtml(p.name)+'</div><div style="font-size:.78rem;color:#71847c;margin-top:5px">'+escapeHtml(p.dimensions||p.size||'')+'</div></div><div style="white-space:nowrap;font-weight:800">'+money(p.price)+'<button onclick="removeItem('+i+')" style="display:block;border:0;background:transparent;color:#71847c;font-size:.72rem;padding:6px 0 0">Quitar</button></div></div>').join('');document.getElementById('total').textContent=money(cart.reduce((a,p)=>a+Number(p.price||0),0))}
-function placeholder(i){return '<div class="art or'+(i%6+1)+' football-scene"><div class="tag">PLAY3D / 0'+String(i+1).padStart(2,'0')+'</div><div class="scene-sky"></div><div class="stadium-reflection"></div><div class="glass-panel"></div><div class="ground-plane"></div><div class="pedestal"></div><div class="contact-shadow"></div><div class="object"></div></div>'}
+function placeholder(i){return '<div class="art or'+(i%6+1)+' football-scene"><div class="tag">PLAY3D / 0'+String(i+1).padStart(2,'0')+'</div><div class="scene-sky"></div><div class="stadium-reflection"></div><div class="glass-panel"></div><div class="ground-plane"></div><div class="contact-shadow"></div><div class="object"></div></div>'}
 function atmosphereFor(p){const s=((p?.category||'').toLowerCase());if(s.includes('futbol')||s.includes('figura')||s.includes('player')||s.includes('mess')||s.includes('scalon')||s.includes('dibu')||s.includes('colap'))return'football';return'neutral'}
-function cardMarkup(p,i){const art=p.main_image_url?'<div class="art or'+(i%6+1)+' football-scene"><div class="tag">PLAY3D / 0'+String(i+1).padStart(2,'0')+'</div><div class="scene-sky"></div><div class="stadium-reflection"></div><div class="glass-panel"></div><div class="ground-plane"></div><div class="pedestal"></div><div class="contact-shadow"></div><img class="product-photo" src="'+escapeHtml(p.main_image_url)+'" alt="'+escapeHtml(p.name)+'" loading="lazy" decoding="async"></div>':placeholder(i);return '<article class="product"><div class="art-wrap">'+art+'</div><div class="meta"><div><h3>'+escapeHtml(p.name)+'</h3><span>'+escapeHtml(p.dimensions||p.size||'')+'</span></div><div class="price">'+money(p.price)+'</div></div><button class="add" onclick="add('+i+')"><span>AGREGAR</span><span>→</span></button></article>'}
+function cardMarkup(p,i){const art=p.main_image_url?'<div class="art or'+(i%6+1)+' football-scene"><div class="tag">PLAY3D / 0'+String(i+1).padStart(2,'0')+'</div><div class="scene-sky"></div><div class="stadium-reflection"></div><div class="glass-panel"></div><div class="ground-plane"></div><div class="contact-shadow"></div><img class="product-photo" src="'+escapeHtml(p.main_image_url)+'" alt="'+escapeHtml(p.name)+'" loading="lazy" decoding="async"></div>':placeholder(i);return '<article class="product"><div class="art-wrap">'+art+'</div><div class="meta"><div><h3>'+escapeHtml(p.name)+'</h3><span>'+escapeHtml(p.dimensions||p.size||'')+'</span></div><div class="price">'+money(p.price)+'</div></div><button class="add" onclick="add('+i+')"><span>AGREGAR</span><span>→</span></button></article>'}
 function renderProducts(){document.getElementById('products').innerHTML=products.map(cardMarkup).join('');attachParallax()}
 async function loadProducts(){try{const r=await fetch(SUPABASE_URL+'/rest/v1/play3d_products?select=id,name,price,stock,category,dimensions,description,main_image_url,featured&published=eq.true&order=featured.desc,created_at.desc',{headers:{apikey:SUPABASE_KEY,Authorization:'Bearer '+SUPABASE_KEY}});if(!r.ok)throw 0;const data=await r.json();if(Array.isArray(data)&&data.length)products=data}catch(e){}const coll=document.getElementById('collection');const first=products[0];if(coll)coll.dataset.atmosphere=atmosphereFor(first);renderProducts()}
-function attachParallax(){document.querySelectorAll('.product .art').forEach(art=>{const img=art.querySelector('.product-photo'),glass=art.querySelector('.glass-panel'),ground=art.querySelector('.ground-plane'),ped=art.querySelector('.pedestal'),shadow=art.querySelector('.contact-shadow'),reflection=art.querySelector('.stadium-reflection'),sky=art.querySelector('.scene-sky');const move=(x,y)=>{art.style.setProperty('--mx',x);art.style.setProperty('--my',y);if(img)img.style.transform='translate3d('+(x*11)+'px,'+(y*8)+'px,0) rotateY('+(x*-2.8)+'deg) rotateX('+(y*1.8)+'deg) scale(1.006)';if(glass)glass.style.transform='translate3d('+(x*2)+'px,'+(y*2)+'px,0)';if(ground)ground.style.transform='perspective(900px) rotateX(57deg) translate3d('+(x*-2)+'px,'+(y*-2)+'px,0)';if(ped)ped.style.transform='perspective(800px) rotateX(10deg) translate3d('+(x*-2)+'px,'+(y*-1)+'px,0)';if(shadow)shadow.style.transform='translate3d('+(x*-3)+'px,'+(y*-1)+'px,0) scale('+(1.12+x*.02)+')';if(reflection)reflection.style.transform='skewX(-10deg) translate3d('+(x*4)+'px,'+(y*3)+'px,0)';if(sky)sky.style.transform='translate3d('+(x*-2)+'px,'+(y*-1)+'px,0) scale(1.02)'};art.addEventListener('pointermove',ev=>{const r=art.getBoundingClientRect(),x=Math.max(-1,Math.min(1,(ev.clientX-r.left)/r.width*2-1)),y=Math.max(-1,Math.min(1,(ev.clientY-r.top)/r.height*2-1));move(x,y)},{passive:true});art.addEventListener('pointerleave',()=>move(0,0),{passive:true})})}
+function attachParallax(){document.querySelectorAll('.product .art').forEach(art=>{const img=art.querySelector('.product-photo'),glass=art.querySelector('.glass-panel'),ground=art.querySelector('.ground-plane'),shadow=art.querySelector('.contact-shadow'),reflection=art.querySelector('.stadium-reflection'),sky=art.querySelector('.scene-sky');const move=(x,y)=>{art.style.setProperty('--mx',x);art.style.setProperty('--my',y);if(img)img.style.transform='translate3d('+(x*10)+'px,'+(y*7)+'px,0) rotateY('+(x*-2.2)+'deg) rotateX('+(y*1.4)+'deg) scale(1.008)';if(glass)glass.style.transform='translate3d('+(x*2)+'px,'+(y*2)+'px,0)';if(ground)ground.style.transform='perspective(900px) rotateX(57deg) translate3d('+(x*-2)+'px,'+(y*-2)+'px,0)';if(shadow)shadow.style.transform='translate3d('+(x*-3)+'px,'+(y*-1)+'px,0) scale('+(1.10+x*.015)+')';if(reflection)reflection.style.transform='skewX(-10deg) translate3d('+(x*4)+'px,'+(y*3)+'px,0)';if(sky)sky.style.transform='translate3d('+(x*-2)+'px,'+(y*-1)+'px,0) scale(1.02)'};art.addEventListener('pointermove',ev=>{const r=art.getBoundingClientRect(),x=Math.max(-1,Math.min(1,(ev.clientX-r.left)/r.width*2-1)),y=Math.max(-1,Math.min(1,(ev.clientY-r.top)/r.height*2-1));move(x,y)},{passive:true});art.addEventListener('pointerleave',()=>move(0,0),{passive:true})})}
 let raf=0;addEventListener('scroll',()=>{if(raf)return;raf=requestAnimationFrame(()=>{document.querySelectorAll('.product .art').forEach(art=>{const r=art.getBoundingClientRect(),delta=(innerHeight/2-(r.top+r.height/2))/innerHeight,img=art.querySelector('.product-photo'),scene=art.querySelector('.real-scene');if(img)img.style.marginTop=(delta*10)+'px';if(scene)scene.style.transform='translate3d('+(delta*7)+'px,'+(delta*-18)+'px,0) scale(1.035)'});raf=0})},{passive:true});
 renderCart();loadProducts();
 </script>
