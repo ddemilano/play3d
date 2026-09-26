@@ -99,7 +99,7 @@ const SUPABASE_URL='https://fynbhcnwpnhgjhzrrbjg.supabase.co';
 const SUPABASE_KEY='sb_publishable_qW61dEsKBzaimdgrVlKOaw_cbPOPWds';
 const BUCKET='play3d-products';
 const supabase=createClient(SUPABASE_URL,SUPABASE_KEY);
-rembgConfig.setCustomModelPath('u2netp','https://github.com/bunn-io/rembg-web/releases/download/base-models/u2netp.onnx');
+rembgConfig.setCustomModelPath('u2netp','https://huggingface.co/edgetools/u2netp/resolve/main/u2netp.onnx');
 
 const $=id=>document.getElementById(id);
 const loginView=$('loginView'), adminView=$('adminView'), loginMsg=$('loginMsg');
