@@ -112,20 +112,32 @@ function money(n){return '$'+Number(n||0).toLocaleString('es-AR',{maximumFractio
 function showLogin(msg=''){loginView.classList.remove('hidden');adminView.classList.add('hidden');loginMsg.textContent=msg}
 function showAdmin(){loginView.classList.add('hidden');adminView.classList.remove('hidden')}
 
-async function checkAdmin(){
- const {data:{session}}=await supabase.auth.getSession();
+async function checkAdmin(sessionOverride=null){
+ const session=sessionOverride ?? (await supabase.auth.getSession()).data.session;
  if(!session){showLogin();return false}
- const {data,error}=await supabase.from('play3d_admins').select('user_id,active').eq('user_id',session.user.id).eq('active',true).maybeSingle();
- if(error||!data){await supabase.auth.signOut();showLogin('Esta cuenta no tiene acceso al panel Play3D.');return false}
- showAdmin(); await loadProducts(); return true;
+ const {data,error}=await supabase.rpc('is_play3d_admin');
+ if(error){showLogin('No se pudo verificar el acceso al panel: '+error.message);return false}
+ if(data!==true){await supabase.auth.signOut();showLogin('Esta cuenta no tiene acceso al panel Play3D.');return false}
+ showAdmin(); loginMsg.textContent=''; await loadProducts(); return true;
 }
 
 $('loginBtn').onclick=async()=>{
- loginMsg.textContent='Ingresando…';
- const email=$('loginEmail').value.trim(), password=$('loginPassword').value;
- const {error}=await supabase.auth.signInWithPassword({email,password});
- if(error){loginMsg.textContent=error.message;return}
- await checkAdmin();
+ const btn=$('loginBtn');
+ btn.disabled=true;
+ btn.textContent='INGRESANDO…';
+ loginMsg.textContent='';
+ const email=$('loginEmail').value.trim();
+ const password=$('loginPassword').value;
+ const {data,error}=await supabase.auth.signInWithPassword({email,password});
+ if(error){
+   loginMsg.textContent=error.message;
+   btn.disabled=false;
+   btn.textContent='ENTRAR';
+   return;
+ }
+ await checkAdmin(data.session);
+ btn.disabled=false;
+ btn.textContent='ENTRAR';
 };
 $('resetBtn').onclick=async()=>{
  const email=$('loginEmail').value.trim();
@@ -134,8 +146,7 @@ $('resetBtn').onclick=async()=>{
  loginMsg.textContent=error?error.message:'Te enviamos un enlace para restablecer la contraseña.';
 };
 $('logoutBtn').onclick=async()=>{await supabase.auth.signOut();showLogin()};
-supabase.auth.onAuthStateChange(()=>{setTimeout(checkAdmin,0)});
-
+supabase.auth.onAuthStateChange(()=>{});
 function resetForm(){
  form.reset();$('productId').value='';$('category').value='FIGURAS 3D';$('published').checked=true;
  $('featured').checked=false;$('formTitle').textContent='Nuevo producto';$('cancelBtn').classList.add('hidden');
