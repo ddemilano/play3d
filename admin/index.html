@@ -165,7 +165,7 @@ drop.ondrop=e=>{e.preventDefault();drop.style.borderColor='';const f=e.dataTrans
 
 async function processAndUpload(file,productId){
  progress.style.width='5%';fileStatus.textContent='Procesando automáticamente…';
- const session=newSession('u2netp');
+ const session=await newSession('u2netp');
  const result=await remove(file,{session,postProcessMask:true,onProgress:info=>{const p=Math.max(5,Math.min(92,Math.round(info.progress)));progress.style.width=p+'%';fileStatus.textContent=info.message||'Procesando automáticamente…'}});
  progress.style.width='94%';fileStatus.textContent='Guardando original y versión transparente…';
  const ext=(file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg');
