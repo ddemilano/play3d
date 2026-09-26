@@ -93,7 +93,7 @@ main{padding:34px 0 70px}.head{display:flex;justify-content:space-between;align-
 <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.23.0/dist/ort.min.js"></script>
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-import { remove, rembgConfig } from 'https://cdn.jsdelivr.net/npm/@bunnio/rembg-web@latest/+esm';
+import { remove, newSession, rembgConfig } from 'https://cdn.jsdelivr.net/npm/@bunnio/rembg-web@latest/+esm';
 
 const SUPABASE_URL='https://fynbhcnwpnhgjhzrrbjg.supabase.co';
 const SUPABASE_KEY='sb_publishable_qW61dEsKBzaimdgrVlKOaw_cbPOPWds';
@@ -165,7 +165,8 @@ drop.ondrop=e=>{e.preventDefault();drop.style.borderColor='';const f=e.dataTrans
 
 async function processAndUpload(file,productId){
  progress.style.width='5%';fileStatus.textContent='Procesando automáticamente…';
- const result=await remove(file,{postProcessMask:true,onProgress:info=>{const p=Math.max(5,Math.min(92,Math.round(info.progress)));progress.style.width=p+'%';fileStatus.textContent=info.message||'Procesando automáticamente…'}});
+ const session=await newSession('u2netp');
+ const result=await remove(file,{session,postProcessMask:true,onProgress:info=>{const p=Math.max(5,Math.min(92,Math.round(info.progress)));progress.style.width=p+'%';fileStatus.textContent=info.message||'Procesando automáticamente…'}});
  progress.style.width='94%';fileStatus.textContent='Guardando original y versión transparente…';
  const ext=(file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg');
  const base=productId+'/'+Date.now();
