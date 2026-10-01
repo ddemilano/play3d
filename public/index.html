@@ -1295,15 +1295,31 @@ img { max-width: 100%; display: block; }
   gap: 12px;
 }
 .cart-shipping-notice {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid var(--border-subtle);
-  padding: 10px 12px;
+  display: grid;
+  gap: 3px;
+  padding: 11px 13px;
+  border: 1px solid rgba(16, 185, 129, 0.18);
   border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(232, 248, 240, 0.95), rgba(255, 255, 255, 0.88));
+  color: var(--text-secondary);
+}
+.cart-shipping-local {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
+  color: #126B48;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  font-weight: 800;
+}
+.cart-shipping-local span:first-child {
+  flex: 0 0 auto;
+}
+.cart-shipping-national {
+  padding-left: 25px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  line-height: 1.35;
   font-weight: 600;
 }
 .cart-subtotal-row, .cart-total-row {
@@ -1321,21 +1337,6 @@ img { max-width: 100%; display: block; }
   font-weight: 900;
   letter-spacing: -0.03em;
   color: var(--text-primary);
-}
-.cart-discount-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  color: #087A4B;
-  font-size: 0.94rem;
-  font-weight: 800;
-}
-.cart-payment-note {
-  margin: -6px 0 0;
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  line-height: 1.4;
 }
 .btn-checkout-whatsapp {
   display: flex;
@@ -2004,36 +2005,18 @@ footer {
     </div>
     <button class="btn-close" onclick="toggleCart(false)" aria-label="Cerrar carrito">✕</button>
   </div>
-
-  <div id="cartItems" class="cart-items-list">
-    <!-- Items generados dinámicamente -->
-  </div>
-
+  <div id="cartItems" class="cart-items-list"><!-- Items generados dinámicamente --></div>
   <div class="cart-drawer-foot">
     <div class="cart-shipping-notice">
-      <span>🚚</span>
-      <span>Envío gratis en Córdoba Capital (dentro de Circunvalación) en compras mayores a $50.000 · Envíos al país por Andreani</span>
+      <div class="cart-shipping-local"><span>🚚</span><span>Envío gratis en Córdoba Capital en compras mayores a $50.000</span></div>
+      <div class="cart-shipping-national">Dentro de Circunvalación · Resto del país por Andreani</div>
     </div>
-    <div class="cart-subtotal-row">
-      <span>Subtotal</span>
-      <span id="subtotalPrice">$0</span>
-    </div>
-    <div class="cart-total-row">
-      <span>Total Mercado Pago</span>
-      <span id="totalPrice">$0</span>
-    </div>
-    <div class="cart-discount-row">
-      <span>Por transferencia · 5 % OFF</span>
-      <span id="transferTotalPrice">$0</span>
-    </div>
+    <div class="cart-subtotal-row"><span>Subtotal</span><span id="subtotalPrice">$0</span></div>
+    <div class="cart-total-row"><span>Total Mercado Pago</span><span id="totalPrice">$0</span></div>
+    <div class="cart-discount-row"><span>Por transferencia · 5 % OFF</span><span id="transferTotalPrice">$0</span></div>
     <p class="cart-payment-note">El descuento por transferencia se confirma por WhatsApp.</p>
-
-    <button class="btn-checkout-mp" onclick="checkoutMercadoPago()">
-      Pagar precio publicado · Mercado Pago
-    </button>
-    <button class="btn-checkout-whatsapp" onclick="checkoutWhatsApp()">
-      Consultar por WhatsApp · 5 % OFF por transferencia
-    </button>
+    <button class="btn-checkout-mp" onclick="checkoutMercadoPago()">Pagar precio publicado · Mercado Pago</button>
+    <button class="btn-checkout-whatsapp" onclick="checkoutWhatsApp()">Consultar por WhatsApp · 5 % OFF por transferencia</button>
   </div>
 </aside>
 
